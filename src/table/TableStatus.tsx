@@ -17,17 +17,17 @@ const TableStatus = ({ tableStatus }: TableStatusType) => {
     return <div className={css(styles.tableContainer)}>Loading...</div>;
   }
 
-  if (isEmpty) {
-    return (
-      <div className={css(styles.tableContainer)}>No matches found...</div>
-    );
-  }
-
   if (hasError) {
     return (
       <div className={css(styles.tableContainer)}>
         Error: {hasError.message}
       </div>
+    );
+  }
+
+  if (isEmpty) {
+    return (
+      <div className={css(styles.tableContainer)}>No matches found...</div>
     );
   }
 
