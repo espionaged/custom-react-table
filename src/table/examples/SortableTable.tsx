@@ -9,14 +9,12 @@ import TableDataCell from "table/TableDataCell";
 import TableCaption from "table/TableCaption";
 import TableHeaderSortable from "table/TableHeaderSortable";
 import TableStatus from "table/TableStatus";
-import TableColumnSortIcon from "table/TableColumnSortIcon";
 import TableSection from "table/TableSection";
 import TableHeaderCell from "table/TableHeaderCell";
 import Pagination from "pagination/Pagination";
 import PaginationPerPageField from "pagination/PaginationPerPageField";
 import PaginationNav from "pagination/PaginationNav";
 import PaginationNavButton from "pagination/PaginationNavButton";
-import HeaderButton from "buttons/HeaderButton";
 import Layout from "control/Layout";
 import SearchInputField from "search/SearchInputField";
 import { SortingState } from "utils/sortCityData";
@@ -27,31 +25,24 @@ let id = 0;
 
 const defaultColumns = [
   {
-    headerGroup: {
-      id: id++,
-      headers: [
-        {
-          id: id++,
-          value: "name",
-          label: "City",
-        },
-        {
-          id: id++,
-          value: "country",
-          label: "Country",
-        },
-        {
-          id: id++,
-          value: "countryIso3",
-          label: "Country ISO3",
-        },
-        {
-          id: id++,
-          value: "population",
-          label: "Population",
-        },
-      ],
-    },
+    id: id++,
+    value: "name",
+    label: "City",
+  },
+  {
+    id: id++,
+    value: "country",
+    label: "Country",
+  },
+  {
+    id: id++,
+    value: "countryIso3",
+    label: "Country ISO3",
+  },
+  {
+    id: id++,
+    value: "population",
+    label: "Population",
   },
 ];
 
@@ -96,7 +87,6 @@ const SortableTable = () => {
       sorting,
     });
 
-
   return (
     <div>
       <h1 className={css(styles.visuallyHidden)}>City List</h1>
@@ -109,21 +99,19 @@ const SortableTable = () => {
             City List
           </TableCaption>
           <TableHead>
-            {defaultColumns.map(({ headerGroup }) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map(({ label, value }) => (
-                  <TableHeaderSortable
-                    sort={
-                      sorting["key"] === value ? sorting["direction"] : "none"
-                    }
-                    scope={"col"}
-                    onClick={() => onSort(value)}
-                  >
-                    {label}
-                  </TableHeaderSortable>
-                ))}
-              </TableRow>
-            ))}
+            <TableRow>
+              {defaultColumns.map(({ value, label }) => (
+                <TableHeaderSortable
+                  sort={
+                    sorting["key"] === value ? sorting["direction"] : "none"
+                  }
+                  scope={"col"}
+                  onClick={() => onSort(value)}
+                >
+                  {label}
+                </TableHeaderSortable>
+              ))}
+            </TableRow>
           </TableHead>
           <TableBody>
             {data.length > 0
@@ -185,7 +173,6 @@ const styles = StyleSheet.create({
     clip: "rect(0, 0, 0, 0)",
     border: 0,
   },
-  
 });
 
 export default SortableTable;
