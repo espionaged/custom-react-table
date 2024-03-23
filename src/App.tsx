@@ -27,52 +27,7 @@ export const App = () => {
       <div className={css(styles.section)}>
         <h1>Keyboard Navigation</h1>
         <pre>Table cells aren't focusable in this implementation</pre>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableHeaderCell scope={"col"}>Key</TableHeaderCell>
-              <TableHeaderCell scope={"col"}>Function</TableHeaderCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow>
-              <TableDataCell>Shift + Tab</TableDataCell>
-              <TableDataCell>
-                {
-                  "Navigates to previous focusable component (i.e. pagination nav, input, select)"
-                }
-              </TableDataCell>
-            </TableRow>
-            <TableRow>
-              <TableDataCell>Tab</TableDataCell>
-              <TableDataCell>
-                {
-                  "Navigates to next focusable component (i.e. pagination nav, input, select)"
-                }
-              </TableDataCell>
-            </TableRow>
-            <TableRow>
-              <TableDataCell>Return</TableDataCell>
-              <TableDataCell>
-                {"Triggers an action based on the focusable component"}
-              </TableDataCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-
-        <div className={css(styles.section)}>
-          <h1>{"<SortableTable />"}</h1>
-          <pre>
-            {
-              "The idea of <SortableTable /> is to provide modularity, Some components still require some logic such as <TableHeaderSortable />"
-            }
-          </pre>
-          <pre>
-            {
-              "We can expand on these designs to include out of the box features, such icon toggling for sortable headers, dev hands off."
-            }
-          </pre>
-        </div>
+        <KeyboardNavigation />
       </div>
     </div>
   );
@@ -206,6 +161,43 @@ function Documentation({ tableBody }: { tableBody: any[] }) {
             ))}
           </TableRow>
         ))}
+      </TableBody>
+    </Table>
+  );
+}
+
+function KeyboardNavigation() {
+  return (
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableHeaderCell scope={"col"}>Key</TableHeaderCell>
+          <TableHeaderCell scope={"col"}>Function</TableHeaderCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableDataCell>Shift + Tab</TableDataCell>
+          <TableDataCell>
+            {
+              "Navigates to previous focusable component (i.e. pagination nav, input, select)"
+            }
+          </TableDataCell>
+        </TableRow>
+        <TableRow>
+          <TableDataCell>Tab</TableDataCell>
+          <TableDataCell>
+            {
+              "Navigates to next focusable component (i.e. pagination nav, input, select)"
+            }
+          </TableDataCell>
+        </TableRow>
+        <TableRow>
+          <TableDataCell>Return</TableDataCell>
+          <TableDataCell>
+            {"Triggers an action based on the focusable component"}
+          </TableDataCell>
+        </TableRow>
       </TableBody>
     </Table>
   );
