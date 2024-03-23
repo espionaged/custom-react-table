@@ -23,6 +23,7 @@ export function useQuery({
   const runSearch = useCallback(
     async (term: string) => {
       try {
+        setHasError(null);
         setIsLoading(true);
         const params = {
           searchTerm: term,
